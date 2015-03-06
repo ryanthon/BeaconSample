@@ -13,7 +13,7 @@ import CoreBluetooth
 class ViewController: UIViewController, CBPeripheralManagerDelegate {
 
     let beaconID = "CSR beacon"
-    let beaconUUID = "4B5B9305-BA7F-4E69-B985-FB505253D81F"
+    let beaconUUID = NSUUID()
     
     var cbManager: CBPeripheralManager!
     
@@ -25,7 +25,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     }
     
     func startAdvertisingAsBeacon() {
-        let uuid = NSUUID( UUIDString: beaconUUID )
+        let uuid = NSUUID( UUIDString: beaconUUID.UUIDString )
         let beaconRegion = CLBeaconRegion( proximityUUID: uuid, identifier: beaconID )
         beaconRegion.notifyEntryStateOnDisplay = true
         
